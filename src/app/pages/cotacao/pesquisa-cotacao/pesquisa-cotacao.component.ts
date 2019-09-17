@@ -47,7 +47,6 @@ export class PesquisaCotacaoComponent implements OnInit {
     this.escolaApiService.getMateriais(this.selectedEscola, this.selectedSerie)
       .subscribe(materiaisResult => {
         this.materias = materiaisResult ? materiaisResult.itens : [];
-        console.log(this.materias)
       });
   }
 }
