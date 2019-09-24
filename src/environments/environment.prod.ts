@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://cotacaoescolar.herokuapp.com'
+  apiUrl: 'https://cotacaoescolar.herokuapp.com/v1'
 };
