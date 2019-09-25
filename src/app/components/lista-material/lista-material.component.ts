@@ -11,7 +11,7 @@ export class ListaMaterialComponent {
 
   @Output() materialRemovido = new EventEmitter();
 
-  removerMaterial(index) {
+  removerMaterial(index: number) {
     if (index !== -1) {
       this.materias.splice(index, 1);
       this.materialRemovido.emit();

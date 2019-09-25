@@ -6,7 +6,7 @@
     <ul class="list-group list-group-flush cm-lst">
       <li *ngFor="let item of materias; let i = index">
         <label class="cm-label">
-          <i (click)="removerMaterial(index)" class="fa fa-trash-o cm-icon-trash"></i> 
+          <i (click)="removerMaterial(i)" class="fa fa-trash-o cm-icon-trash"></i> 
           {{item.quantidade}} {{item.materialEscolar.descricao}} 
         </label>
       </li>
