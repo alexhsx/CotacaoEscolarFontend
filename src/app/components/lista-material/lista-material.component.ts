@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { ItemModel } from 'src/app/models/item-model';
 
 @Component({
@@ -7,5 +7,14 @@ import { ItemModel } from 'src/app/models/item-model';
   styleUrls: ['./lista-material.component.css']
 })
 export class ListaMaterialComponent {
-  @Input() materias:Array<ItemModel>;
+  @Input() materias: Array<ItemModel>;
+
+  @Output() materialRemovido = new EventEmitter();
+
+  removerMaterial(index) {
+    if (index !== -1) {
+      this.materias.splice(index, 1);
+      this.materialRemovido.emit();
+    }
+  }
 }

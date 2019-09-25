@@ -1,16 +1,17 @@
 <div class="row products">
-<cotacao></cotacao>
+  <cotacao *ngFor="let c of cotacao" [cotacao]="c"></cotacao>
 </div>
 
-<div class="pages">
+<div *ngIf="cotacao && cotacao.length > 0" class="pages">
   <ul class="pagination">
-    <li><a href="#">«</a>
+    <li *ngIf="cotacao.length > 1"><a href="#">«</a>
     </li>
-    <li class="active"><a href="#">1</a>
-    </li>
-    <li><a href="#">2</a>
-    </li>
-    <li><a href="#">»</a>
+    <!-- <li class="active"><a href="#">1</a>
+    </li> -->
+    <!-- <li *ngFor="let c of cotacao; let i = index + 1">
+      <a href="#">{{i}}</a>
+    </li> -->
+    <li *ngIf="cotacao.length > 1" ><a href="#">»</a>
     </li>
   </ul>
 </div>

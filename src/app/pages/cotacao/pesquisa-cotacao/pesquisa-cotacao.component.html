@@ -14,9 +14,9 @@
                 </select>
             </div>
         </form>
-        <lista-material [materias]="materias"></lista-material>
+        <lista-material [materias]="materias" (materialRemovido)="buscarCotacoe()"></lista-material>
     </div>
     <div class="col-sm-9">
-        <lista-cotacao></lista-cotacao>
+        <lista-cotacao [cotacao]="cotacoes"></lista-cotacao>
     </div>
 </div>

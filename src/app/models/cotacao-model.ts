@@ -1,6 +1,9 @@
+import { EncontradoModel } from './encontrado-model';
+import { NaoEncontradoModel } from './nao-encontrado-model';
+
 export class CotacaoModel {
-    descricao:string;
-    quantidade:number;
-    valorUnitario:number;
-    valorTotal:number;
-  }
+  encontrados: Array<EncontradoModel>;
+  naoEncontrados: Array<NaoEncontradoModel>;
+  nome: string;
+  total: Number;
+}

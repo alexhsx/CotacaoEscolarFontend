@@ -4,12 +4,15 @@
   </div>
   <div class="panel-body">
     <ul class="list-group list-group-flush cm-lst">
-      <li *ngFor="let item of materias">
+      <li *ngFor="let item of materias; let i = index">
         <label class="cm-label">
-          <i class="fa fa-trash-o cm-icon-trash"></i> {{item.quantidade}} {{item.descricao}} 
+          <i (click)="removerMaterial(index)" class="fa fa-trash-o cm-icon-trash"></i> 
+          {{item.quantidade}} {{item.materialEscolar.descricao}} 
         </label>
       </li>
     </ul>
-    <button class="btn btn-default btn-sm btn-template-main"><i class="fa fa-plus"></i> Adicionar</button>
+    <button class="btn btn-default btn-sm btn-template-main">
+      <i class="fa fa-plus"></i> Adicionar
+    </button>
   </div>
 </div>

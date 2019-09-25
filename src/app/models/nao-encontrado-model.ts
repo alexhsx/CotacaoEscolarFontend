@@ -1,6 +1,6 @@
 import { MaterialEscolarModel } from './material-escolar-model';
 
-export class ItemModel {
-  quantidade: number;
+export class NaoEncontradoModel {
   materialEscolar: MaterialEscolarModel;
+  quantidade: Number;
 }

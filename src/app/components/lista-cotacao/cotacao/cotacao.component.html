@@ -1,13 +1,19 @@
-<div class="col-md-4 col-sm-6">
-    <div class="product">
-      <div class="image" style="height: 262px;">
-        <a href="shop-detail.html">
-          <img src="assets/img/loja1.jpg" alt="" class="img-responsive image1">
-        </a>
-      </div>
-      <div class="text">
-        <h3><a href="shop-detail.html">Magazine Luiza</a></h3>
-        <p class="price">R$143.00</p>
-      </div>
+<div *ngIf="cotacao.encontrados.length > 0" class="col-md-4 col-sm-6">
+  <div class="product">
+    <div class="image" style="height: 262px;">
+      <a href="#">
+        <img src="assets/img/loja1.jpg" alt="" class="img-responsive image1">
+      </a>
+    </div>
+    <div class="text">
+      <h3><a href="#">{{cotacao.nome}}</a></h3>
+      <p class="price">R$ {{cotacao.total}}</p>
+      <p class="notfound">Materieis não encontrados {{cotacao.naoEncontrados.length}}</p>
+      <p class="notfound">
+        <span *ngFor="let c of cotacao.naoEncontrados; let i = index">
+          {{c.materialEscolar.descricao}}{{i==cotacao.naoEncontrados.length -1? '':','}}
+        </span>
+      </p>
     </div>
   </div>
+</div>

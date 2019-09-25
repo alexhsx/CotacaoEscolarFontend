@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CotacaoModel } from 'src/app/models/cotacao-model';
 
 @Component({
   selector: 'lista-cotacao',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./lista-cotacao.component.css']
 })
 export class ListaCotacaoComponent {
-  title = 'cotacao-escolar-frontend';
+  @Input() cotacao: Array<CotacaoModel>;
 }
