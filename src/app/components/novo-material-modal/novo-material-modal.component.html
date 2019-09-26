@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Deseja adicionar um novo material a lista?</h1>
+<div mat-dialog-content>
+  <p>Informe o nome do material</p>
+  <mat-form-field class="mat-form-field-custom">
+    <input matInput [(ngModel)]="data.materialEscolar.descricao">
+  </mat-form-field>
+  <p>Informe a quantidade</p>
+  <mat-form-field class="mat-form-field-custom">
+    <input matInput [(ngModel)]="data.quantidade">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data">Adicionar</button>
+</div>
