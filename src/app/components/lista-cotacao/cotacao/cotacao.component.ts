@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CotacaoModel } from 'src/app/models/cotacao-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cotacao',
@@ -8,4 +9,13 @@ import { CotacaoModel } from 'src/app/models/cotacao-model';
 })
 export class CotacaoComponent {
   @Input() cotacao: CotacaoModel;
+  @Output() chamarDetalhe = new EventEmitter();
+
+  constructor(private router: Router) { }
+
+  abrirDetalhe() {
+    this.chamarDetalhe.emit(); 
+    localStorage.setItem('cotacao', JSON.stringify(this.cotacao));
+    this.router.navigate(['/cotacao/detalhe']);
+  }
 }

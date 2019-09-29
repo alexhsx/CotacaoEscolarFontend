@@ -7,14 +7,19 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
 import { NovoMaterialModalComponent } from './novo-material-modal/novo-material-modal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CotacaoDetalheComponent } from './cotacao-detalhe/cotacao-detalhe.component';
+import { RouterModule } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
 
 const comps = [
   ListaMaterialComponent,
   ListaCotacaoComponent,
   CotacaoComponent,
-  NovoMaterialModalComponent
+  NovoMaterialModalComponent,
+  CotacaoDetalheComponent
 ];
 
 @NgModule({
@@ -24,7 +29,11 @@ const comps = [
     CommonModule,
     MatDialogModule,
     FormsModule,
+    RouterModule,
+    MatTableModule,
     MatFormFieldModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
     MatInputModule,
     MatButtonModule
   ], entryComponents: [NovoMaterialModalComponent]

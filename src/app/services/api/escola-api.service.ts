@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { ItemModel } from 'src/app/models/item-model';
 import { CotacaoModel } from 'src/app/models/cotacao-model';
 import { CotarModel } from 'src/app/models/cotar-model';
+import { MaterialEscolarModel } from 'src/app/models/material-escolar-model';
 
 
 @Injectable({
@@ -29,6 +30,11 @@ export class EscolaApiService {
             'itens/' +
             escola.nome + '/' +
             serie);
+    }
+
+    getAllMateriais() : Observable<MaterialEscolarModel[]>{
+        return this.http.get<MaterialEscolarModel[]>(this.url +
+            'descricoes');
     }
 
     getCotacoes(cotar: CotarModel): Observable<any> {

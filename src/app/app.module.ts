@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { SharedModule } from './components/shared/shared.module';
+import { LoaderService } from './services/loader.service';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     BrowserModule,
     CommonModule,
     HttpClientModule,
+    SharedModule,
     AppRoutingModule,
     CotacaoModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule
   ],
   providers: [
+    { provide: LoaderService, useClass: LoaderService },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

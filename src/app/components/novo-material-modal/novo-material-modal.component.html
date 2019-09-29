@@ -1,12 +1,16 @@
 <h1 mat-dialog-title>Deseja adicionar um novo material a lista?</h1>
 <div mat-dialog-content>
-  <p>Informe o nome do material</p>
   <mat-form-field class="mat-form-field-custom">
-    <input matInput [(ngModel)]="data.materialEscolar.descricao">
+    <!-- <input matInput [(ngModel)]="data.materialEscolar.descricao"> -->
+    <input type="text"  placeholder="Nome do material" aria-label="Nome do material" [formControl]="myControl"  matInput [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option.descricao}}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
-  <p>Informe a quantidade</p>
   <mat-form-field class="mat-form-field-custom">
-    <input matInput [(ngModel)]="data.quantidade">
+    <input type="number" matInput  placeholder="Quantidade" aria-label="Quantidade" [(ngModel)]="data.quantidade">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

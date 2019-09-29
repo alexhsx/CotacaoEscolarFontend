@@ -4,9 +4,11 @@ import { ListaComponentModule } from 'src/app/components/lista-component.module'
 import { CotacaoRoutingModule } from './cotacao-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DetalheComponent } from './detalhe/detalhe.component';
 
 const comps = [
-    PesquisaCotacaoComponent
+    PesquisaCotacaoComponent,
+    DetalheComponent
 ];
 
 @NgModule({

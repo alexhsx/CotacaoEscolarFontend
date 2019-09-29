@@ -1,0 +1,52 @@
+<nav class="breadcrumbs">
+  <ul class="containerli">
+    <li class="home">
+      <a href="#" [routerLink]="['']" title="Ir p/ Página de Pesquisa">Pesquisa</a>
+    </li>
+    <li>
+      <strong>Orçamento</strong>
+    </li>
+  </ul>
+</nav>
+<div class="row">
+  <div class="col-md-6">
+    <div class="col-md-12">
+      <img src="assets/img/loja1.jpg" alt="" class="img-responsive image1">
+    </div>
+
+    <div *ngIf="cotacao.naoEncontrados.length > 0" class="col-md-12">
+      <h3>Materiais não encontrados</h3>
+      <p *ngFor="let item of cotacao.naoEncontrados" style="color: red; font-weight: bold;">{{item.materialEscolar.descricao}}</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <h1>Magazine luiza</h1>
+    <h2>Orçamento</h2>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="quantidade">
+        <th mat-header-cell *matHeaderCellDef> Quant. </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef> Material </th>
+        <td mat-cell *matCellDef="let element"> {{element.materialEscolar.descricao}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="valorUnitario">
+        <th mat-header-cell *matHeaderCellDef> Valor Unitário </th>
+        <td mat-cell *matCellDef="let element">R$ {{element.valorUnitario}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef> Valor Total </th>
+        <td mat-cell *matCellDef="let element">R$ {{element.valorTotal}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+</div>

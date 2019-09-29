@@ -28,8 +28,23 @@ export class PesquisaCotacaoComponent implements OnInit {
         this.escolas = escolaResult;
         this.escolas.sort((a, b) => a.nome.localeCompare(b.nome));
         this.selectedEscola = this.escolas[0];
+        // this.previousSetUp();
         this.buscarSerie();
       });
+  }
+
+  previousSetUp() {
+    const es = localStorage.getItem('escola');
+    const ser = localStorage.getItem('serie');
+    if (!es || !ser){
+      this.buscarSerie();
+      return;
+    }
+
+    this.selectedSerie = JSON.parse(ser);
+    this.selectedEscola = JSON.parse(es);
+
+    this.buscarMaterial();
   }
 
   buscarSerie() {
@@ -47,6 +62,7 @@ export class PesquisaCotacaoComponent implements OnInit {
   }
 
   buscarMaterial() {
+    this.chamarDetalhe();
     this.escolaApiService.getMateriais(this.selectedEscola, this.selectedSerie)
       .subscribe(materiaisResult => {
         this.materias = materiaisResult ? materiaisResult : [];
@@ -68,5 +84,10 @@ export class PesquisaCotacaoComponent implements OnInit {
       .subscribe(cotacoes => {
         this.cotacoes = cotacoes.resultado;
       });
+  }
+
+  chamarDetalhe() {
+    localStorage.setItem('escola', JSON.stringify(this.selectedEscola));
+    localStorage.setItem('serie', JSON.stringify(this.selectedSerie));
   }
 }
