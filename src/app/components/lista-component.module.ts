@@ -13,12 +13,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CotacaoDetalheComponent } from './cotacao-detalhe/cotacao-detalhe.component';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
+import { NovoGenModalComponent } from './novo-gen-modal/novo-gen-modal.component';
 
 const comps = [
   ListaMaterialComponent,
   ListaCotacaoComponent,
   CotacaoComponent,
   NovoMaterialModalComponent,
+  NovoGenModalComponent,
   CotacaoDetalheComponent
 ];
 
@@ -36,6 +38,6 @@ const comps = [
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule
-  ], entryComponents: [NovoMaterialModalComponent]
+  ], entryComponents: [NovoMaterialModalComponent, NovoGenModalComponent]
 })
 export class ListaComponentModule { }

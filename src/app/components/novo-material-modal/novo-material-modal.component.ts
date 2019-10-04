@@ -5,7 +5,7 @@ import { MaterialEscolarModel } from 'src/app/models/material-escolar-model';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { EscolaApiService } from 'src/app/services/api/escola-api.service';
+import { MaterialApiService } from 'src/app/services/api/material-api.service';
 
 @Component({
   selector: 'novo-material-modal',
@@ -15,31 +15,27 @@ import { EscolaApiService } from 'src/app/services/api/escola-api.service';
 export class NovoMaterialModalComponent implements OnInit {
 
   myControl = new FormControl();
-  options: MaterialEscolarModel[] = [
-    { descricao: 'Mary' },
-    { descricao: 'Shelley' },
-    { descricao: 'Igor' }
-  ];
+  options: MaterialEscolarModel[] = [];
   filteredOptions: Observable<MaterialEscolarModel[]>;
 
   constructor(
     public dialogRef: MatDialogRef<NovoMaterialModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ItemModel,
-    private escolaApiService: EscolaApiService) { }
+    private materialApiService: MaterialApiService) { }
 
   ngOnInit() {
-    this.escolaApiService.getAllMateriais()
-    .subscribe(result=>{
-      this.options = result;
+    this.materialApiService.getAllMateriais()
+      .subscribe(result => {
+        this.options = result;
 
-      this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.descricao),
-        map(descricao => descricao ? this._filter(descricao) : this.options.slice())
-      );
+        this.filteredOptions = this.myControl.valueChanges
+          .pipe(
+            startWith(''),
+            map(value => typeof value === 'string' ? value : value.descricao),
+            map(descricao => descricao ? this._filter(descricao) : this.options.slice())
+          );
 
-    });
+      });
   }
 
   displayFn(user?: MaterialEscolarModel): string | undefined {

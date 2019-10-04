@@ -5,6 +5,7 @@ import { CotacaoRoutingModule } from './cotacao-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DetalheComponent } from './detalhe/detalhe.component';
+import { MatButtonModule } from '@angular/material/button';
 
 const comps = [
     PesquisaCotacaoComponent,
@@ -18,7 +19,8 @@ const comps = [
         ListaComponentModule,
         CotacaoRoutingModule,
         CommonModule,
-        FormsModule      
+        MatButtonModule,
+        FormsModule
     ]
 })
 export class CotacaoModule { }

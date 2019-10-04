@@ -1,22 +1,28 @@
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <form>
             <div class="form-group">
                 <label for="inputEscola">Escola</label>
-                <select id="inputEscola" name="inputEscola"  [(ngModel)]="selectedEscola" class="form-control" (change)="buscarSerie()">
+                <select id="inputEscola" name="inputEscola" [(ngModel)]="selectedEscola" class="form-control"
+                    (change)="selecionarEscola()">
+                    <option *ngIf="escolas.length == 0" [ngValue]="undefined"></option>
+                    <option [ngValue]="defaultEscola">Adicionar escola</option>
                     <option *ngFor="let e of escolas; let i = index" [ngValue]="e">{{e.nome}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="inputSerie">Série</label>
-                <select id="inputSerie" name="inputSerie" [(ngModel)]="selectedSerie" class="form-control" (change)="buscarMaterial()">
+                <select id="inputSerie" name="inputSerie" [(ngModel)]="selectedSerie" class="form-control"
+                    (change)="selecionarSerie()">
+                    <option *ngIf="series.length == 0" [ngValue]="0"></option>
+                    <option [ngValue]="-88">Adicionar série</option>
                     <option *ngFor="let s of series; let i = index">{{s}}</option>
                 </select>
             </div>
         </form>
         <lista-material [materias]="materias" (materialRemovido)="buscarCotacoe()"></lista-material>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-8">
         <lista-cotacao [cotacao]="cotacoes" (chamarDetalhe)="chamarDetalhe()"></lista-cotacao>
     </div>
 </div>

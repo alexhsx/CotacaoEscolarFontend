@@ -7,16 +7,16 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root',
 })
-export class EscolaApiService {
+export class SerieApiService {
     private url = environment.apiUrl + '/';
     constructor(private http: HttpClient) {
     }
 
-    getEscolas(): Observable<Array<EscolaModel>> {
-        return this.http.get<Array<EscolaModel>>(this.url + 'escolas');
+    getSeries(escola: EscolaModel): Observable<Array<number>> {
+        return this.http.get<Array<number>>(this.url + 'series/' + escola.nome);
     }
 
-    insertEscola(escola: EscolaModel): Observable<any> {
-        return this.http.post<any>(this.url + 'escola', escola);
+    insertSerie(escola: EscolaModel, serie: number): Observable<any> {
+        return this.http.post<any>(this.url + 'serie', { escola: escola.nome, serie: serie });
     }
 }
