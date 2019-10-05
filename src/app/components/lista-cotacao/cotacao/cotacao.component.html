@@ -7,7 +7,7 @@
     </div>
     <div class="text">
       <h3><a (click)="abrirDetalhe()" style="cursor: pointer;" >{{cotacao.nome}}</a></h3>
-      <p class="price">R$ {{cotacao.total}}</p>
+      <p class="price" *ngIf="cotacao.total && cotacao.total > 0">R$ {{cotacao.total}}</p>
       <p *ngIf="cotacao.naoEncontrados.length > 0" class="notfound">Materieis não encontrados {{cotacao.naoEncontrados.length}}</p>
       <p class="notfound">
         <span *ngFor="let c of cotacao.naoEncontrados; let i = index">

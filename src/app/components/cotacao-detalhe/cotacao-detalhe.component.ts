@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./cotacao-detalhe.component.css']
 })
 export class CotacaoDetalheComponent implements OnInit {
-  displayedColumns: string[] = ['quantidade', 'descricao', 'valor', 'valorUnitario'];
+  displayedColumns: string[] = ['quantidade', 'descricao', 'valorUnitario', 'valor'];
   dataSource: EncontradoModel[] = [];
   cotacao: CotacaoModel;
   constructor(

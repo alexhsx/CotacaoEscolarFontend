@@ -41,11 +41,12 @@ export class PesquisaCotacaoComponent implements OnInit {
     this.buscarEscola();
   }
 
-  buscarEscola(escola = null) {
+  buscarEscola(escola: EscolaModel = null) {
     this.escolaApiService.getEscolas()
       .subscribe(escolaResult => {
         this.escolas = escolaResult;
         this.escolas.sort((a, b) => a.nome.localeCompare(b.nome));
+        escola = escola ? this.escolas.find(e => e.nome === escola.nome) : null;
         this.selectedEscola = escola ? escola : this.escolas[0];
         // this.previousSetUp();
         this.buscarSerie();
@@ -135,12 +136,13 @@ export class PesquisaCotacaoComponent implements OnInit {
     this.cotacoes = lista;
     lista.forEach(l => l.visivel = l.encontrados.length > 0);
     const addCotacao = new CotacaoModel();
-    addCotacao.nome = 'Deseja adicionar uma nova cotação? Clique em mim!';
+    addCotacao.nome = 'Deseja adicionar um novo orçamento? Clique em mim!';
     addCotacao.encontrados = [];
     addCotacao.naoEncontrados = [];
     addCotacao.total = 0;
     addCotacao.visivel = true;
     addCotacao.logoPath = 'assets/img/plus.png';
+    addCotacao.detalheLink = '';
 
     this.cotacoes.unshift(addCotacao);
   }

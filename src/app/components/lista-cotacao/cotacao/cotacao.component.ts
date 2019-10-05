@@ -16,7 +16,8 @@ export class CotacaoComponent {
   abrirDetalhe() {
     this.chamarDetalhe.emit();
     localStorage.setItem('cotacao', JSON.stringify(this.cotacao));
-    this.router.navigate(['/cotacao/detalhe']);
+    const link = this.cotacao.detalheLink ? this.cotacao.detalheLink : '/cotacao/detalhe';
+    this.router.navigate([link]);
   }
 
   obterImagem() {

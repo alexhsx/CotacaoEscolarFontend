@@ -8,4 +8,5 @@ export class CotacaoModel {
   total: number;
   visivel: boolean;
   logoPath: string;
+  detalheLink: string;
 }
