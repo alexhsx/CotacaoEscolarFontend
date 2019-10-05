@@ -5,7 +5,7 @@ export class CotacaoModel {
   encontrados: Array<EncontradoModel>;
   naoEncontrados: Array<NaoEncontradoModel>;
   nome: string;
-  total: Number;
+  total: number;
   visivel: boolean;
   logoPath: string;
 }

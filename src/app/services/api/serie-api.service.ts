@@ -17,6 +17,6 @@ export class SerieApiService {
     }
 
     insertSerie(escola: EscolaModel, serie: number): Observable<any> {
-        return this.http.post<any>(this.url + 'serie', { escola: escola.nome, serie: serie });
+        return this.http.post<any>(this.url + 'serie', { escola: escola.nome, serie });
     }
 }

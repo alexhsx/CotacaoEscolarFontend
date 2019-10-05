@@ -8,7 +8,7 @@ import { startWith, map } from 'rxjs/operators';
 import { MaterialApiService } from 'src/app/services/api/material-api.service';
 
 @Component({
-  selector: 'novo-material-modal',
+  selector: 'app-novo-material-modal',
   templateUrl: './novo-material-modal.component.html',
   styleUrls: ['./novo-material-modal.component.css']
 })

@@ -1,3 +1,3 @@
 export class EscolaModel {
-    nome:string;
-  }
+  nome: string;
+}

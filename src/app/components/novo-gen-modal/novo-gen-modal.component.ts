@@ -1,12 +1,11 @@
 import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ItemModel } from 'src/app/models/item-model';
 import { MaterialEscolarModel } from 'src/app/models/material-escolar-model';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'novo-gen-modal',
+  selector: 'app-novo-gen-modal',
   templateUrl: './novo-gen-modal.component.html',
   styleUrls: ['./novo-gen-modal.component.css']
 })

@@ -23,17 +23,21 @@ export class PesquisaCotacaoComponent implements OnInit {
   selectedSerie: number;
   cotacoes: Array<CotacaoModel>;
 
-  defaultEscola = new EscolaModel;
+  defaultEscola = new EscolaModel();
 
   constructor(private escolaApiService: EscolaApiService,
+    // tslint:disable-next-line:align
     private serieApiService: SerieApiService,
+    // tslint:disable-next-line:align
     private materialApiService: MaterialApiService,
+    // tslint:disable-next-line:align
     private cotacaoApiService: CotacaoApiService,
+    // tslint:disable-next-line:align
     public dialog: MatDialog) { }
 
   ngOnInit() {
 
-    this.selectedEscola = new EscolaModel;
+    this.selectedEscola = new EscolaModel();
     this.buscarEscola();
   }
 
@@ -78,7 +82,7 @@ export class PesquisaCotacaoComponent implements OnInit {
 
   buscarMaterial() {
     this.chamarDetalhe();
-    if (!this.selectedEscola || !this.selectedSerie) return;
+    if (!this.selectedEscola || !this.selectedSerie) { return; }
     this.materialApiService.getMateriais(this.selectedEscola, this.selectedSerie)
       .subscribe(materiaisResult => {
         this.materias = materiaisResult ? materiaisResult : [];
@@ -87,7 +91,7 @@ export class PesquisaCotacaoComponent implements OnInit {
   }
 
   buscarCotacoe() {
-    const cotar = new CotarModel;
+    const cotar = new CotarModel();
     cotar.escola = this.selectedEscola;
     cotar.serie = this.selectedSerie;
     cotar.itens = this.materias;
@@ -105,7 +109,7 @@ export class PesquisaCotacaoComponent implements OnInit {
   selecionarEscola() {
     if (!this.selectedEscola) {
       return;
-    } else if (this.selectedEscola == this.defaultEscola) {
+    } else if (this.selectedEscola === this.defaultEscola) {
       const dialogRef = this.dialog.open(NovoGenModalComponent, {
         width: '500px',
         data: {
@@ -117,8 +121,8 @@ export class PesquisaCotacaoComponent implements OnInit {
 
       dialogRef.afterClosed()
         .subscribe(result => {
-          if (!result || result == '') return;
-          const novaEscola = new EscolaModel;
+          if (!result || result === '') { return; }
+          const novaEscola = new EscolaModel();
           novaEscola.nome = result.text;
           this.escolaApiService.insertEscola(novaEscola).subscribe(r => { this.buscarEscola(novaEscola); });
         });
@@ -130,7 +134,7 @@ export class PesquisaCotacaoComponent implements OnInit {
   preencherListaCotacao(lista: CotacaoModel[]) {
     this.cotacoes = lista;
     lista.forEach(l => l.visivel = l.encontrados.length > 0);
-    const addCotacao = new CotacaoModel;
+    const addCotacao = new CotacaoModel();
     addCotacao.nome = 'Deseja adicionar uma nova cotação? Clique em mim!';
     addCotacao.encontrados = [];
     addCotacao.naoEncontrados = [];
@@ -142,10 +146,9 @@ export class PesquisaCotacaoComponent implements OnInit {
   }
 
   selecionarSerie() {
-    if (this.selectedSerie == 0) {
-
+    if (this.selectedSerie === 0) {
       return;
-    } else if (this.selectedSerie == -88) {
+    } else if (this.selectedSerie === -88) {
       const dialogRef = this.dialog.open(NovoGenModalComponent, {
         width: '500px',
         data: {
@@ -157,7 +160,7 @@ export class PesquisaCotacaoComponent implements OnInit {
 
       dialogRef.afterClosed()
         .subscribe(result => {
-          if (!result || result == '') return;
+          if (!result || result === '') { return; }
           this.serieApiService.insertSerie(this.selectedEscola, result.text).subscribe(r => { this.buscarSerie(result.text); });
         });
       return;

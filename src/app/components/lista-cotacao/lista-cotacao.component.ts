@@ -1,16 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CotacaoModel } from 'src/app/models/cotacao-model';
 
 @Component({
-  selector: 'lista-cotacao',
+  selector: 'app-lista-cotacao',
   templateUrl: './lista-cotacao.component.html',
   styleUrls: ['./lista-cotacao.component.css']
 })
-export class ListaCotacaoComponent implements OnInit {
+export class ListaCotacaoComponent {
   @Input() cotacao: Array<CotacaoModel>;
-  
-
-  ngOnInit(): void {
-    
-  }
 }

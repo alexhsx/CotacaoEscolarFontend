@@ -5,7 +5,7 @@ import { NovoMaterialModalComponent } from '../novo-material-modal/novo-material
 import { MaterialEscolarModel } from 'src/app/models/material-escolar-model';
 
 @Component({
-  selector: 'lista-material',
+  selector: 'app-lista-material',
   templateUrl: './lista-material.component.html',
   styleUrls: ['./lista-material.component.css']
 })
@@ -26,8 +26,8 @@ export class ListaMaterialComponent {
   }
 
   adicionarMaterial() {
-    this.novoMaterial = new ItemModel;
-    this.novoMaterial.materialEscolar = new MaterialEscolarModel;
+    this.novoMaterial = new ItemModel();
+    this.novoMaterial.materialEscolar = new MaterialEscolarModel();
     const dialogRef = this.dialog.open(NovoMaterialModalComponent, {
       width: '500px',
       data: this.novoMaterial

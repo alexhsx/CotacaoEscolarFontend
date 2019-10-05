@@ -5,7 +5,7 @@ import { EncontradoModel } from 'src/app/models/encontrado-model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'cotacao-detalhe',
+  selector: 'app-cotacao-detalhe',
   templateUrl: './cotacao-detalhe.component.html',
   styleUrls: ['./cotacao-detalhe.component.css']
 })

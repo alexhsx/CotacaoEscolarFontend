@@ -3,7 +3,7 @@ import { CotacaoModel } from 'src/app/models/cotacao-model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'cotacao',
+  selector: 'app-cotacao',
   templateUrl: './cotacao.component.html',
   styleUrls: ['./cotacao.component.css']
 })
