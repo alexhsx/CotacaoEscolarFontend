@@ -1,8 +1,8 @@
-<div *ngIf="cotacao.encontrados.length > 0" class="col-md-4 col-sm-6">
+<div *ngIf="cotacao.visivel" class="col-md-4 col-sm-6">
   <div class="product">
     <div class="image" style="height: 262px;">
       <a (click)="abrirDetalhe()" style="cursor: pointer;">
-        <img src="assets/img/loja1.jpg" alt="" class="img-responsive image1">
+        <img [src]="obterImagem()" alt="" class="img-responsive image1">
       </a>
     </div>
     <div class="text">

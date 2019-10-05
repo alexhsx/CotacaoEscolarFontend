@@ -5,7 +5,7 @@
                 <label for="inputEscola">Escola</label>
                 <select id="inputEscola" name="inputEscola" [(ngModel)]="selectedEscola" class="form-control"
                     (change)="selecionarEscola()">
-                    <option *ngIf="escolas.length == 0" [ngValue]="undefined"></option>
+                    <option *ngIf="escolas.length == 0" [ngValue]="null"></option>
                     <option [ngValue]="defaultEscola">Adicionar escola</option>
                     <option *ngFor="let e of escolas; let i = index" [ngValue]="e">{{e.nome}}</option>
                 </select>

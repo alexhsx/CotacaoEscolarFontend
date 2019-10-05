@@ -78,6 +78,7 @@ export class PesquisaCotacaoComponent implements OnInit {
 
   buscarMaterial() {
     this.chamarDetalhe();
+    if (!this.selectedEscola || !this.selectedSerie) return;
     this.materialApiService.getMateriais(this.selectedEscola, this.selectedSerie)
       .subscribe(materiaisResult => {
         this.materias = materiaisResult ? materiaisResult : [];
@@ -91,13 +92,13 @@ export class PesquisaCotacaoComponent implements OnInit {
     cotar.serie = this.selectedSerie;
     cotar.itens = this.materias;
     if (!this.materias || this.materias.length < 1) {
-      this.cotacoes = [];
+      this.preencherListaCotacao([]);
       return;
     }
 
     this.cotacaoApiService.getCotacoes(cotar)
       .subscribe(cotacoes => {
-        this.cotacoes = cotacoes.resultado;
+        this.preencherListaCotacao(cotacoes.resultado);
       });
   }
 
@@ -124,6 +125,20 @@ export class PesquisaCotacaoComponent implements OnInit {
       return;
     }
     this.buscarSerie();
+  }
+
+  preencherListaCotacao(lista: CotacaoModel[]) {
+    this.cotacoes = lista;
+    lista.forEach(l => l.visivel = l.encontrados.length > 0);
+    const addCotacao = new CotacaoModel;
+    addCotacao.nome = 'Deseja adicionar uma nova cotação? Clique em mim!';
+    addCotacao.encontrados = [];
+    addCotacao.naoEncontrados = [];
+    addCotacao.total = 0;
+    addCotacao.visivel = true;
+    addCotacao.logoPath = 'assets/img/plus.png';
+
+    this.cotacoes.unshift(addCotacao);
   }
 
   selecionarSerie() {

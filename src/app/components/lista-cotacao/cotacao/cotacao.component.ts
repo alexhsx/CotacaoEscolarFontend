@@ -14,8 +14,12 @@ export class CotacaoComponent {
   constructor(private router: Router) { }
 
   abrirDetalhe() {
-    this.chamarDetalhe.emit(); 
+    this.chamarDetalhe.emit();
     localStorage.setItem('cotacao', JSON.stringify(this.cotacao));
     this.router.navigate(['/cotacao/detalhe']);
+  }
+
+  obterImagem() {
+    return this.cotacao.logoPath ? this.cotacao.logoPath : 'assets/img/loja1.jpg';
   }
 }

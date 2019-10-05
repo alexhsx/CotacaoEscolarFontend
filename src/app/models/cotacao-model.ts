@@ -6,4 +6,6 @@ export class CotacaoModel {
   naoEncontrados: Array<NaoEncontradoModel>;
   nome: string;
   total: Number;
+  visivel: boolean;
+  logoPath: string;
 }
