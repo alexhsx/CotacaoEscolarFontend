@@ -83,15 +83,18 @@ export class PesquisaCotacaoComponent implements OnInit {
 
   buscarMaterial() {
     this.chamarDetalhe();
+    localStorage.setItem('material', JSON.stringify(this.materias));
     if (!this.selectedEscola || !this.selectedSerie) { return; }
     this.materialApiService.getMateriais(this.selectedEscola, this.selectedSerie)
       .subscribe(materiaisResult => {
         this.materias = materiaisResult ? materiaisResult : [];
+        localStorage.setItem('material', JSON.stringify(this.materias));
         this.buscarCotacoe();
       });
   }
 
   buscarCotacoe() {
+    localStorage.setItem('material', JSON.stringify(this.materias));
     const cotar = new CotarModel();
     cotar.escola = this.selectedEscola;
     cotar.serie = this.selectedSerie;
@@ -142,7 +145,7 @@ export class PesquisaCotacaoComponent implements OnInit {
     addCotacao.total = 0;
     addCotacao.visivel = true;
     addCotacao.logoPath = 'assets/img/plus.png';
-    addCotacao.detalheLink = '';
+    addCotacao.detalheLink = '/cotacao/add-produto';
 
     this.cotacoes.unshift(addCotacao);
   }

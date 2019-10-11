@@ -51,4 +51,14 @@ export class NovoMaterialModalComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  onAdd() {
+    const desc = this._filter(this.data.materialEscolar.descricao);
+    if (desc.length === 0) {
+      this.materialApiService.setMaterial(this.data.materialEscolar.descricao)
+        .subscribe(result => {
+          this.dialogRef.close();
+        });
+    }
+  }
 }

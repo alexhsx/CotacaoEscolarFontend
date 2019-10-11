@@ -15,6 +15,6 @@ export class CotacaoApiService {
 
     getCotacoes(cotar: CotarModel): Observable<any> {
         return this.http.post<any>(this.url +
-            'escolas', cotar);
+            'cotar', cotar);
     }
 }
