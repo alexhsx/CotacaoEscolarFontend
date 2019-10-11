@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './novo-orcamento.component.html',
   styleUrls: ['./novo-orcamento.component.css']
 })
-export class NovoMaterialModalComponent implements OnInit {
+export class NovoOrcamentoComponent implements OnInit {
 
   constructor() { }
 
