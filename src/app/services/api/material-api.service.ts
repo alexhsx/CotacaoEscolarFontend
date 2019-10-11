@@ -29,9 +29,12 @@ export class MaterialApiService {
 
     setMaterial(descricao: string): Observable<any> {
         return this.http.post<any>(this.url +
-            'descricaoMaterial', descricao,{ headers:new HttpHeaders({
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            })});
+            'descricaoMaterial', descricao, {
+                headers: new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                })
+        });
     }
+
 }
