@@ -14,6 +14,7 @@ import { CotacaoDetalheComponent } from './cotacao-detalhe/cotacao-detalhe.compo
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { NovoGenModalComponent } from './novo-gen-modal/novo-gen-modal.component';
+import { NovoOrcamentoComponent } from './nova-cotacao/novo-orcamento.component';
 
 const comps = [
   ListaMaterialComponent,
@@ -21,6 +22,7 @@ const comps = [
   CotacaoComponent,
   NovoMaterialModalComponent,
   NovoGenModalComponent,
+  NovoOrcamentoComponent,
   CotacaoDetalheComponent
 ];
 
