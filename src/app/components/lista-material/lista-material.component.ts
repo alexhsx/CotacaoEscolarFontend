@@ -38,10 +38,16 @@ export class ListaMaterialComponent {
     dialogRef.afterClosed().subscribe(result => {
       this.novoMaterial = result;
       if (this.novoMaterial &&
-            this.novoMaterial.materialEscolar.descricao &&
-            this.novoMaterial.quantidade > 0) {
-        this.materias.push(this.novoMaterial);
-        this.materialAdicionado.emit(this.novoMaterial);
+        this.novoMaterial.materialEscolar.descricao &&
+        this.novoMaterial.quantidade > 0) {
+        const existenteMate = this.materias.find(m => m.materialEscolar.descricao === this.novoMaterial.materialEscolar.descricao);
+        if (existenteMate) {
+          existenteMate.quantidade = this.novoMaterial.quantidade;
+          this.materialRemovido.emit(this.novoMaterial);
+        } else {
+          this.materias.push(this.novoMaterial);
+          this.materialAdicionado.emit(this.novoMaterial);
+        }
       }
     });
   }
