@@ -22,11 +22,11 @@ export class MaterialApiService {
             serie, item);
     }
 
-    excluiNaLista(escola: EscolaModel, serie: number, item: ItemModel): Observable<any> {
-        return this.http.delete<any>(this.url +
+    atualizarNaLista(escola: EscolaModel, serie: number, item: ItemModel): Observable<any> {
+        return this.http.put<any>(this.url +
             'item/' +
             escola.nome + '/' +
-            serie + '/' + item.materialEscolar.descricao + '/' + item.quantidade);
+            serie, item);
     }
 
     getMateriais(escola: EscolaModel, serie: number): Observable<Array<ItemModel>> {

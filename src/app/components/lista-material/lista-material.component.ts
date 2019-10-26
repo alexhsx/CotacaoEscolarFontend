@@ -22,6 +22,7 @@ export class ListaMaterialComponent {
   removerMaterial(index: number, item: ItemModel) {
     if (index !== -1) {
       this.materias.splice(index, 1);
+      item.quantidade = 0;
       this.materialRemovido.emit(item);
     }
   }

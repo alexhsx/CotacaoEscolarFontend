@@ -121,9 +121,9 @@ export class PesquisaCotacaoComponent implements OnInit {
     this.buscarCotacoe();
   }
 
-  removerMaterialNaLista(item: ItemModel){
+  removerMaterialNaLista(item: ItemModel) {
     if (item) {
-      this.materialApiService.excluiNaLista(this.selectedEscola, this.selectedSerie, item).subscribe(result => { });
+      this.materialApiService.atualizarNaLista(this.selectedEscola, this.selectedSerie, item).subscribe(result => { });
     }
     this.buscarCotacoe();
   }
