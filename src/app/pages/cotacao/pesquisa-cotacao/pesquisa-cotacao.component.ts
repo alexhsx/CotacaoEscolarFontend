@@ -115,9 +115,15 @@ export class PesquisaCotacaoComponent implements OnInit {
   }
 
   adicionarMaterialNaLista(item: ItemModel) {
-    console.log(item);
     if (item) {
       this.materialApiService.inseriNaLista(this.selectedEscola, this.selectedSerie, item).subscribe(result => { });
+    }
+    this.buscarCotacoe();
+  }
+
+  removerMaterialNaLista(item: ItemModel){
+    if (item) {
+      this.materialApiService.excluiNaLista(this.selectedEscola, this.selectedSerie, item).subscribe(result => { });
     }
     this.buscarCotacoe();
   }

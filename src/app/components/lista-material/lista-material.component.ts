@@ -12,16 +12,17 @@ import { MaterialEscolarModel } from 'src/app/models/material-escolar-model';
 export class ListaMaterialComponent {
   @Input() materias: Array<ItemModel>;
   @Output() materialRemovido = new EventEmitter<ItemModel>();
+  @Output() materialAdicionado = new EventEmitter<ItemModel>();
   novoMaterial: ItemModel;
 
   constructor(public dialog: MatDialog) {
 
   }
 
-  removerMaterial(index: number) {
+  removerMaterial(index: number, item: ItemModel) {
     if (index !== -1) {
       this.materias.splice(index, 1);
-      this.materialRemovido.emit();
+      this.materialRemovido.emit(item);
     }
   }
 
@@ -39,7 +40,7 @@ export class ListaMaterialComponent {
             this.novoMaterial.materialEscolar.descricao &&
             this.novoMaterial.quantidade > 0) {
         this.materias.push(this.novoMaterial);
-        this.materialRemovido.emit(this.novoMaterial);
+        this.materialAdicionado.emit(this.novoMaterial);
       }
     });
   }

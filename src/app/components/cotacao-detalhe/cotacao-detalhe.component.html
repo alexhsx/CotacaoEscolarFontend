@@ -11,7 +11,7 @@
 <div class="row">
   <div class="col-md-6">
     <div class="col-md-12">
-      <img src="assets/img/loja1.jpg" alt="" class="img-responsive image1">
+      <img [src]="obterImagem()" alt="" class="img-responsive image1">
     </div>
 
     <div *ngIf="cotacao.naoEncontrados.length > 0" class="col-md-12">

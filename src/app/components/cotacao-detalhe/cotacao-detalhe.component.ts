@@ -25,4 +25,9 @@ export class CotacaoDetalheComponent implements OnInit {
     this.cotacao = JSON.parse(cot);
     this.dataSource = this.cotacao.encontrados;
   }
+
+  obterImagem() {
+    const image = this.cotacao.logo ? this.cotacao.logo : 'loja1.jpg';
+    return 'assets/img/' + image;
+  }
 }
