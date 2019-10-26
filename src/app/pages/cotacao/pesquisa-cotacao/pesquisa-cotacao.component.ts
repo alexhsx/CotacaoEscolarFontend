@@ -70,6 +70,7 @@ export class PesquisaCotacaoComponent implements OnInit {
   buscarSerie(serie = null) {
     if (!this.selectedEscola) {
       this.series = [];
+      this.materias = [];
       return;
     }
 
@@ -84,7 +85,10 @@ export class PesquisaCotacaoComponent implements OnInit {
   buscarMaterial() {
     this.chamarDetalhe();
     localStorage.setItem('material', JSON.stringify(this.materias));
-    if (!this.selectedEscola || !this.selectedSerie) { return; }
+    if (!this.selectedEscola || !this.selectedSerie) {
+      this.materias = [];
+      return;
+    }
     this.materialApiService.getMateriais(this.selectedEscola, this.selectedSerie)
       .subscribe(materiaisResult => {
         this.materias = materiaisResult ? materiaisResult : [];
@@ -103,6 +107,7 @@ export class PesquisaCotacaoComponent implements OnInit {
       this.preencherListaCotacao([]);
       return;
     }
+    this.materialApiService.inseriNaLista(cotar.escola, cotar.serie, cotar.itens[cotar.itens.length - 1]).subscribe(result => { });
 
     this.cotacaoApiService.getCotacoes(cotar)
       .subscribe(cotacoes => {
@@ -138,16 +143,16 @@ export class PesquisaCotacaoComponent implements OnInit {
   preencherListaCotacao(lista: CotacaoModel[]) {
     this.cotacoes = lista;
     lista.forEach(l => l.visivel = l.encontrados.length > 0);
-    const addCotacao = new CotacaoModel();
-    addCotacao.nome = 'Deseja adicionar um novo orçamento? Clique em mim!';
-    addCotacao.encontrados = [];
-    addCotacao.naoEncontrados = [];
-    addCotacao.total = 0;
-    addCotacao.visivel = true;
-    addCotacao.logoPath = 'assets/img/plus.png';
-    addCotacao.detalheLink = '/cotacao/add-produto';
+    // const addCotacao = new CotacaoModel();
+    // addCotacao.nome = 'Deseja adicionar um novo orçamento? Clique em mim!';
+    // addCotacao.encontrados = [];
+    // addCotacao.naoEncontrados = [];
+    // addCotacao.total = 0;
+    // addCotacao.visivel = true;
+    // addCotacao.logoPath = 'assets/img/plus.png';
+    // addCotacao.detalheLink = '/cotacao/add-produto';
 
-    this.cotacoes.unshift(addCotacao);
+    // this.cotacoes.unshift(addCotacao);
   }
 
   selecionarSerie() {

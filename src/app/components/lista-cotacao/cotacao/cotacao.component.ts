@@ -21,6 +21,6 @@ export class CotacaoComponent {
   }
 
   obterImagem() {
-    return this.cotacao.logoPath ? this.cotacao.logoPath : 'assets/img/loja1.jpg';
+    return this.cotacao.logo ? this.cotacao.logo : 'assets/img/loja1.jpg';
   }
 }
