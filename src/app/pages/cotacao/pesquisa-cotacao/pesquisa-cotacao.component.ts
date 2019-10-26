@@ -47,8 +47,8 @@ export class PesquisaCotacaoComponent implements OnInit {
         this.escolas = escolaResult;
         this.escolas.sort((a, b) => a.nome.localeCompare(b.nome));
         escola = escola ? this.escolas.find(e => e.nome === escola.nome) : null;
-        this.selectedEscola = escola ? escola : this.escolas[0];
         // this.previousSetUp();
+        this.selectedEscola = escola ? escola : this.escolas[0];
         this.buscarSerie();
       });
   }
@@ -93,11 +93,11 @@ export class PesquisaCotacaoComponent implements OnInit {
       .subscribe(materiaisResult => {
         this.materias = materiaisResult ? materiaisResult : [];
         localStorage.setItem('material', JSON.stringify(this.materias));
-        this.buscarCotacoe(false);
+        this.buscarCotacoe();
       });
   }
 
-  buscarCotacoe(added: boolean) {
+  buscarCotacoe() {
     localStorage.setItem('material', JSON.stringify(this.materias));
     const cotar = new CotarModel();
     cotar.escola = this.selectedEscola;
@@ -107,15 +107,19 @@ export class PesquisaCotacaoComponent implements OnInit {
       this.preencherListaCotacao([]);
       return;
     }
-    
-    if(added){
-      this.materialApiService.inseriNaLista(cotar.escola, cotar.serie, cotar.itens[cotar.itens.length - 1]).subscribe(result => { });
-    }
 
     this.cotacaoApiService.getCotacoes(cotar)
       .subscribe(cotacoes => {
         this.preencherListaCotacao(cotacoes.resultado);
       });
+  }
+
+  adicionarMaterialNaLista(item: ItemModel) {
+    console.log(item);
+    if (item) {
+      this.materialApiService.inseriNaLista(this.selectedEscola, this.selectedSerie, item).subscribe(result => { });
+    }
+    this.buscarCotacoe();
   }
 
   selecionarEscola() {

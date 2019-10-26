@@ -22,6 +22,13 @@ export class MaterialApiService {
             serie, item);
     }
 
+    excluiNaLista(escola: EscolaModel, serie: number, item: ItemModel): Observable<any> {
+        return this.http.delete<any>(this.url +
+            'item/' +
+            escola.nome + '/' +
+            serie + '/' + item.materialEscolar.descricao + '/' + item.quantidade);
+    }
+
     getMateriais(escola: EscolaModel, serie: number): Observable<Array<ItemModel>> {
         return this.http.get<Array<ItemModel>>(this.url +
             'itens/' +
@@ -37,11 +44,11 @@ export class MaterialApiService {
     setMaterial(descricao: string): Observable<any> {
         return this.http.post<any>(this.url +
             'descricaoMaterial', descricao, {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            })
-        });
+                headers: new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                })
+            });
     }
 
 }

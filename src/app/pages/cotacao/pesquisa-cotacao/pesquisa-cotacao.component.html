@@ -20,7 +20,7 @@
                 </select>
             </div>
         </form>
-        <app-lista-material [materias]="materias" (materialRemovido)="buscarCotacoe(true)"></app-lista-material>
+        <app-lista-material [materias]="materias" (materialRemovido)="adicionarMaterialNaLista($event)"></app-lista-material>
     </div>
     <div class="col-sm-8">
         <app-lista-cotacao [cotacao]="cotacoes" (chamarDetalhe)="chamarDetalhe()"></app-lista-cotacao>
