@@ -93,11 +93,11 @@ export class PesquisaCotacaoComponent implements OnInit {
       .subscribe(materiaisResult => {
         this.materias = materiaisResult ? materiaisResult : [];
         localStorage.setItem('material', JSON.stringify(this.materias));
-        this.buscarCotacoe();
+        this.buscarCotacoe(false);
       });
   }
 
-  buscarCotacoe() {
+  buscarCotacoe(added: boolean) {
     localStorage.setItem('material', JSON.stringify(this.materias));
     const cotar = new CotarModel();
     cotar.escola = this.selectedEscola;
@@ -107,7 +107,10 @@ export class PesquisaCotacaoComponent implements OnInit {
       this.preencherListaCotacao([]);
       return;
     }
-    this.materialApiService.inseriNaLista(cotar.escola, cotar.serie, cotar.itens[cotar.itens.length - 1]).subscribe(result => { });
+    
+    if(added){
+      this.materialApiService.inseriNaLista(cotar.escola, cotar.serie, cotar.itens[cotar.itens.length - 1]).subscribe(result => { });
+    }
 
     this.cotacaoApiService.getCotacoes(cotar)
       .subscribe(cotacoes => {

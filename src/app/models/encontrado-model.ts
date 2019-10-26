@@ -1,8 +1,8 @@
 import { MaterialEscolarModel } from './material-escolar-model';
 
 export class EncontradoModel {
-  materialEscolar: MaterialEscolarModel;
+  descricao: string;
   quantidade: number;
-  valorTotal: number;
+  total: number;
   valorUnitario: number;
 }
